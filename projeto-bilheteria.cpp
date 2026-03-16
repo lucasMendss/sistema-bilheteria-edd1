@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 #include <locale.h>
 using namespace std;
 
@@ -7,7 +8,15 @@ int main(int argc, char** argv)
 {
 	setlocale(LC_ALL, "");
 	
-	bool ocupacoes[40][15];
+	int i;
+	
+	bool **ocupacoes;
+	ocupacoes = (bool**)malloc(40 * sizeof(bool*));
+	
+	for(i=0; i<40; ++i) // Percorre as linhas
+	{
+		ocupacoes[i] = (bool*)malloc(15 * sizeof(bool)); // Inicialização de cada coluna
+	}
 	
 	//populando toda a matriz com false (todos os lugares livres)
 	for(int fileira = 0; fileira < 40; fileira++){
