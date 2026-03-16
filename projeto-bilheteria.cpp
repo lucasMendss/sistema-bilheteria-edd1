@@ -8,11 +8,11 @@ int main(int argc, char** argv)
 	setlocale(LC_ALL, "");
 	
 	bool ocupacoes[40][15];
+	
 	//populando toda a matriz com false (todos os lugares livres)
 	for(int fileira = 0; fileira < 40; fileira++){
 		for(int poltrona = 0; poltrona < 15; poltrona++){
 			ocupacoes[fileira][poltrona] = false;
-			//cout << fileira+1 << "-" << poltrona+1 << ":" << ocupacoes[fileira][poltrona] << endl;
 		}
 	}
 	
@@ -32,15 +32,18 @@ int main(int argc, char** argv)
 		cout << setfill('-') << setw(65) << "" << endl;
 		cin >> opcao;
 		switch(opcao){
+			
 			case 0:
 				cout << setfill('-') << setw(65) << "" << endl;
 				cout << "Programa finalizado." << endl;
 				cout << setfill('-') << setw(65) << "" << endl;
 				break;
+			
 			case 1:
 				fileiraEscolhida = 0;
 				poltronaEscolhida = 0;
 				//solicitar fileira
+				
 				while(fileiraEscolhida < 1 || fileiraEscolhida > 15){
 					cout << setfill('-') << setw(65) << "" << endl;
 					cout << "Digite o nº da fileira(1 a 15): ";
@@ -63,6 +66,7 @@ int main(int argc, char** argv)
 						cout << "Número inválido. Tente novamente" << endl;
 						cout << setfill('-') << setw(65) << "" << endl;
 					}
+				}
 					// reservar lugar se estiver vazio
 					if(!ocupacoes[poltronaEscolhida-1][fileiraEscolhida-1]){
 						ocupacoes[poltronaEscolhida-1][fileiraEscolhida-1] = true;
@@ -90,7 +94,6 @@ int main(int argc, char** argv)
 						<< " está ocupado. Tente reservar outro." << endl;
 						cout << setfill('-') << setw(65) << "" << endl;
 					}
-				}
 				break;
 			case 2: 
 				cout << setfill('-') << setw(65) << "" << endl;
@@ -118,6 +121,10 @@ int main(int argc, char** argv)
 					}
 					cout << "|" << endl;
 				}
+				cout << setfill('-') << setw(65) << "" << endl;
+				cout << "Legenda" << endl;
+				cout << "- ## Lugar Ocupado " << endl;
+				cout << "- .. Lugar livre " << endl;
 				cout << setfill('-') << setw(65) << "" << endl;
 				break;
 			case 3:
